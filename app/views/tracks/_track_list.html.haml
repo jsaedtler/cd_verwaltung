@@ -1,0 +1,8 @@
+%table
+  %tr
+    %th Title
+    %th Duration in seconds
+    - album.tracks.each do |track|
+      %tr
+        %td= track.title
+        %td= track.duration

@@ -1,0 +1,13 @@
+.artist_link
+  = link_to 'Albums', artist_albums_path(@aritst)
+
+- if current_user
+  .edit_album_link
+    = link_to 'Edit Album', edit_artist_album_path(@artist, @album)
+
+.cover
+  = image_tag(@album.cover.url :medium)
+.title
+  = @album.title
+.track_list
+  = render :partial => '/tracks/track_list', :locals => {:album => @album}

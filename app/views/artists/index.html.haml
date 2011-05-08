@@ -1,0 +1,9 @@
+.content
+  = link_to 'add new artist', new_artist_path
+  %table
+    %tr
+      %th Name
+      - @artists.each do |artist|
+        %tr
+          %td= link_to(artist.name, artist_albums_path(artist.id))
+

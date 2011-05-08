@@ -1,0 +1,13 @@
+.artits_link
+  = link_to 'Artists', artists_path
+.add_ablum_link
+  = link_to 'add new album', new_artist_album_path(@artist)
+.album_list
+  %table
+    %tr
+      %th Cover
+      %th Title
+      - @albums.each do |album|
+        %tr
+          %td= image_tag(album.cover.url :thumb)
+          %td= link_to(album.title, artist_album_path(@artist,album.id))

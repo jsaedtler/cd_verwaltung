@@ -1,0 +1,10 @@
+%h1 New Track
+= form_for [@artist, @album, @track] do |form|
+  .title
+    = form.label :title
+    = form.text_field :title
+  .duration
+    = form.label :duration
+    = form.number_field :duration
+  .submit  
+    = form.submit('create')

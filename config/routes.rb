@@ -1,13 +1,4 @@
 CdVerwaltung::Application.routes.draw do
-  resources :tracks
-
-  resources :albums
-
-  resources :artists
-
-  resources :users
-
-  resource :session, :only => [:new, :create, :destroy]
 
   match 'signup' => 'users#new', :as => :signup
 
@@ -19,9 +10,13 @@ CdVerwaltung::Application.routes.draw do
 
   match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
 
+  resources :users
+  resource :session, :only => [:new, :create, :destroy]
+
   resources :artists do
     resources :albums do
       resources :tracks
+      resources :comments
     end
   end
 
