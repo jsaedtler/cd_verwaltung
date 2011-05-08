@@ -1,4 +1,10 @@
 CdVerwaltung::Application.routes.draw do
+  resources :tracks
+
+  resources :albums
+
+  resources :artists
+
   resources :users
 
   resource :session, :only => [:new, :create, :destroy]
@@ -12,6 +18,16 @@ CdVerwaltung::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
 
   match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
+
+  resources :artists do
+    resources :albums do
+      resources :tracks
+    end
+  end
+
+  resources :albums do
+    resources :tracks
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

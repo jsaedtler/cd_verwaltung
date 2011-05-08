@@ -13,3 +13,7 @@ Then /^it should create a new user$/ do
   user.email.should == 'new@example.com'
 end
 
+Then /^it should log me in$/ do
+  pending
+end
+

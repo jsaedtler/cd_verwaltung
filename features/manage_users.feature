@@ -1,7 +1,7 @@
-Feature: anonymous creates a user
-  In order to login
-  anonymous
-  wants to create new user
+Feature: User Management
+  As an anonymous user I want to register
+  as new user, login and log out
+  
   
   Scenario: Register new user
     Given I am on the new user page
@@ -13,3 +13,16 @@ Feature: anonymous creates a user
     And I press "Sign up"
     Then it should create a new user
 
+  Scenario: Login
+    Given I am on the new session page
+    When I fill in the following:
+      | login    | new_login    |
+      | password | new_password |
+    And I press "Log in"
+    Then it should log me in
+
+
+  Scenario: Logout
+    Given I am logged in
+    When I go to logout
+    Then It should log me out

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  set_table_name 'users'
+  has_many :artists
 
   validates :login, :presence   => true,
                     :uniqueness => true,
