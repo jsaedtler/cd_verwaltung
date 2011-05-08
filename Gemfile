@@ -32,6 +32,14 @@ gem 'ruby-debug'
 
 
 #simfy requirements
-gem 'cucumber-rails'
-gem 'spork'
+group :test do
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem "rspec-rails", ">= 2.5.0"
+end
+
 gem "haml"
