@@ -11,3 +11,7 @@
   = @album.title
 .track_list
   = render :partial => '/tracks/track_list', :locals => {:album => @album}
+
+.comments
+  = render :partial => '/comments/form', :locals => {:album => @album, :artist => @artist, :comment => @comment}
+  = render :partial => '/comments/list', :locals => {:comments => @album.comments}

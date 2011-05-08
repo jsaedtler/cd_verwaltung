@@ -1,0 +1,7 @@
+.comment_list
+  - comments.each do |comment|
+    .comment
+      .date
+        = comment.created_at
+      .content    
+        = comment.content

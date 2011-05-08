@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def edit
@@ -41,7 +42,7 @@ class AlbumsController < ApplicationController
   end
   
   def get_album
-    @album = Album.find_by_id(params[:id])
+    @album = Album.find_by_id(params[:id], :include => [:tracks, :comments])
   end
 
 end

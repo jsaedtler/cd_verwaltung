@@ -1,0 +1,7 @@
+.comment_form
+  = form_for [artist, album, comment] do |f|
+    .fields
+      = f.label :content, 'comment'
+      = f.text_area :content
+    .actions
+      = f.submit
