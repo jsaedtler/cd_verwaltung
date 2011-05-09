@@ -1,0 +1,9 @@
+- if current_user
+  .span-23
+    Hi 
+    = current_user.login
+  .span-1.last
+    = link_to 'logout', logout_path
+- else
+  .span-24.last
+    = link_to 'login', login_path

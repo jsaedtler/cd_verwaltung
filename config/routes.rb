@@ -1,5 +1,7 @@
 CdVerwaltung::Application.routes.draw do
 
+  root :to => "users#index"
+
   match 'signup' => 'users#new', :as => :signup
 
   match 'register' => 'users#create', :as => :register
@@ -10,7 +12,10 @@ CdVerwaltung::Application.routes.draw do
 
   match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
 
-  resources :users
+  resources :users do
+    resources :artists
+  end
+
   resource :session, :only => [:new, :create, :destroy]
 
   resources :artists do

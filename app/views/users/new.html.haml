@@ -1,0 +1,32 @@
+- @user.password = @user.password_confirmation = nil
+
+.span-20.large.last
+  Create new User
+
+.span-20.last
+  = error_messages_for :user
+.span-20.last
+  = form_for :user, :url => users_path do |f|
+    .span-4
+      = label_tag 'login'
+    .span-16.last
+      = f.text_field :login
+
+    .span-4    
+      = label_tag 'email'
+    .span-16.last
+      = f.text_field :email
+
+    .span-4    
+      = label_tag 'password'
+    .span-16.last
+      = f.password_field :password
+
+    .span-4
+      = label_tag 'password_confirmation', 'Confirm Password'
+    .span-16.last
+      = f.password_field :password_confirmation
+
+    .span-20.last.actions
+      = submit_tag 'Sign up'
+

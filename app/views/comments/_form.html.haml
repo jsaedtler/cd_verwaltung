@@ -1,7 +1,8 @@
-.comment_form
+.span-20.last
   = form_for [artist, album, comment] do |f|
-    .fields
+    .span-4
       = f.label :content, 'comment'
-      = f.text_area :content
-    .actions
+    .span-16.last    
+      = f.text_area :content, :size => "10x2"
+    .span-16.last.actions
       = f.submit

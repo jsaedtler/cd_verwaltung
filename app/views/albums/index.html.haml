@@ -1,13 +1,19 @@
-.artits_link
-  = link_to 'Artists', artists_path
-.add_ablum_link
+- content_for :breadcrumbs do
+  = breadcrumbs(@artist).html_safe
+
+- content_for :sidebar do
+  .span-4.add_ablum_link
   = link_to 'add new album', new_artist_album_path(@artist)
-.album_list
+
+.span-20.large.last
+  Albums of 
+  = @artist.name
+.album_list.span-20.last
   %table
     %tr
       %th Cover
       %th Title
       - @albums.each do |album|
         %tr
-          %td= image_tag(album.cover.url :thumb)
+          %td= link_to(image_tag(album.cover.url :thumb),artist_album_path(@artist, album.id))
           %td= link_to(album.title, artist_album_path(@artist,album.id))

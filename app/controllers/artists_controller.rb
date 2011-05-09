@@ -1,8 +1,7 @@
 class ArtistsController < ApplicationController
-  before_filter :login_required
-
+  before_filter :login_required, :except => :index
+  before_filter :get_resources
   def index
-    @artists = current_user.artists
   end
 
   def new
@@ -19,4 +18,15 @@ class ArtistsController < ApplicationController
       render :new
     end
   end
+
+  private
+
+  def get_resources
+    if current_user
+      @artists = current_user.artists
+    else
+      @artists = User.find(params[:user_id]).artists
+    end
+  end
+
 end

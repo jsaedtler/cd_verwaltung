@@ -1,10 +1,14 @@
-.artist_link
-  = link_to 'Artist', artist_path(@aritst)
+- content_for :breadcrumbs do
+  = breadcrumbs(@album)
 
-.form
+- content_for :sidebar do
+  = link_to 'add new track', new_artist_album_track_path(@artist,@album)
+
+.span-20.large.last
+  Edit Album
+
+.span-20.last
   = render :partial => 'form', :locals => {:artist => @artist, :album => @album}
 
-.add_track
-  = link_to 'add new track', new_artist_album_track_path(@artist,@album)
-.track_list
+.span-20.last
   = render :partial => '/tracks/track_list', :locals => {:album => @album}

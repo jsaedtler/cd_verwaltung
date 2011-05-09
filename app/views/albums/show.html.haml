@@ -1,17 +1,18 @@
-.artist_link
-  = link_to 'Albums', artist_albums_path(@aritst)
+- content_for :breadcrumbs do
+  = breadcrumbs(@album)
 
-- if current_user
-  .edit_album_link
+- content_for :sidebar do
+  - if current_user
     = link_to 'Edit Album', edit_artist_album_path(@artist, @album)
 
-.cover
-  = image_tag(@album.cover.url :medium)
-.title
-  = @album.title
-.track_list
-  = render :partial => '/tracks/track_list', :locals => {:album => @album}
 
-.comments
+.span-20.last
+  .large
+    = @album.title
+.span-10.last.track_list
+  = render :partial => '/tracks/track_list', :locals => {:album => @album}
+.span-10.last
+  = image_tag(@album.cover.url :medium)
+.span-20.comments.last
   = render :partial => '/comments/form', :locals => {:album => @album, :artist => @artist, :comment => @comment}
   = render :partial => '/comments/list', :locals => {:comments => @album.comments}

@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = Album.new
+    @album = @artist.albums.new(:title => 'new album')
   end
 
   def show
