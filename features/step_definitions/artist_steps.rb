@@ -1,5 +1,8 @@
 Given /^the following artists:$/ do |artists|
-  Artist.create!(artists.hashes)
+  user = User.find_by_login('quentin')
+  artists.hashes.each do |hash|
+    user.artists.create!(hash)
+  end
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) artist$/ do |pos|

@@ -7,7 +7,7 @@ class TracksController < ApplicationController
   end
 
   def new
-    @track = Track.new
+    @track = @album.tracks.new
   end
 
   def create

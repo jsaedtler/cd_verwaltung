@@ -3,16 +3,9 @@ Feature: Manage artists
   a register user
   wants to go to the new artist page and enter the artits information
   
-  Scenario: Add new artist
+  Scenario: (4) Add new artist
     Given I am logged in
-    And i am on the new artist page
+    And I am on my new artist page
     When I fill in "Name" with "madonna"
-    And I press "Create"
-    Then I should see "Artist: madonna"
-
-  Scenario: Show all Artists
-    Given the following artists:
-      |madonna   |
-      |metallica |
-      |Pur       |
-      
+    And I press "create"
+    Then I should see "madonna"

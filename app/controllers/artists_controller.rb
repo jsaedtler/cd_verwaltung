@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
   end
 
   def new
-    @artist = Artist.new
+    @artist = Artist.new(:name => 'new artist')
   end
 
   def create

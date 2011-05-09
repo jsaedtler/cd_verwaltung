@@ -1,5 +1,15 @@
-.large New Artist
-= form_for @user, @artist do |form|
-  = form.text_field :name
-  = form.submit('create')
+- content_for :breadcrumbs do
+  = breadcrumbs(@user, @artist)
+
+.span-20.large.last New Artist
+.span-20.last
+  = form_for [@user, @artist] do |form|
+    .span-20.last
+      = form.error_messages
+    .span-4
+      = form.label :name
+    .span-16.last    
+      = form.text_field :name
+    .span-20.last  
+      = form.submit('create')
   

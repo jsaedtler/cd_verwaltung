@@ -1,0 +1,18 @@
+- content_for :sidebar do
+  &nbsp
+
+%h1 Log In
+
+= form_tag session_path do
+  .span-4
+    = label_tag 'login'
+  .span-16
+    = text_field_tag 'login', @login
+
+  .span-4
+    =label_tag 'password'
+  .span-16  
+    = password_field_tag 'password', nil
+
+  .span-20.actions
+    = submit_tag 'Log In'
