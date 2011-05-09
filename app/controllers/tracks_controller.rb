@@ -14,7 +14,7 @@ class TracksController < ApplicationController
     @track = Track.new(params[:track])
     @track.album = @album
     if @track.save
-      redirect_to artist_album_path(@artist,@album)
+      redirect_to user_artist_album_path(@user, @artist,@album)
     else
       render :new
     end

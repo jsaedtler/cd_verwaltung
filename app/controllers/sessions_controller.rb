@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_to('/artists', :notice => "Logged in successfully")
+      redirect_to(user_artists_path(user), :notice => "Logged in successfully")
     else
       note_failed_signin
       @login       = params[:login]

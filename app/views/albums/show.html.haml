@@ -1,9 +1,9 @@
 - content_for :breadcrumbs do
-  = breadcrumbs(@album)
+  = breadcrumbs(@user, @album)
 
 - content_for :sidebar do
   - if current_user
-    = link_to 'Edit Album', edit_artist_album_path(@artist, @album)
+    = link_to 'Edit Album', edit_user_artist_album_path(@user,@artist, @album)
 
 
 .span-20.last

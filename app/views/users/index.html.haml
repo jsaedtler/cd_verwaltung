@@ -1,6 +1,9 @@
 - content_for :sidebar do
-  = link_to 'add new user', new_user_path if !current_user
+  .span-4
+    &nbsp
+    = link_to 'add new user', new_user_path if !current_user
 
+%h1 Users
 .span-20.last
   %table
     %tr

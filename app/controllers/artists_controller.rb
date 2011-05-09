@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
     @artist.user = current_user
 
     if @artist.save
-      redirect_to artists_path
+      redirect_to user_artists_path(@user)
     else
       render :new
     end

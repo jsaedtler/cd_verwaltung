@@ -19,7 +19,7 @@ class AlbumsController < ApplicationController
 
   def update
     if @album.update_attributes(params[:album])
-      redirect_to artist_album_path(@artist, @album), :notice => 'Album was successfully updated.'
+      redirect_to user_artist_album_path(@user, @artist, @album), :notice => 'Album was successfully updated.'
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class AlbumsController < ApplicationController
     @album = Album.new(params[:album])
     @album.artist = @artist
     if @album.save
-      redirect_to artist_album_path(@artist, @album), :notice => 'Album was successfully created.'
+      redirect_to user_artist_album_path(@user, @artist, @album), :notice => 'Album was successfully created.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class AlbumsController < ApplicationController
   private
 
   def get_artist
-    @artist = current_user.artists.find_by_id(params[:artist_id], :include => :albums)
+    @artist = @user.artists.find_by_id(params[:artist_id], :include => :albums)
   end
   
   def get_album

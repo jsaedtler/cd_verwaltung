@@ -1,9 +1,14 @@
-- content_for :sidebar do
-  = link_to 'add new artist', new_artist_path
+- content_for :breadcrumbs do
+  = breadcrumbs(@user,nil)
 
-%table
-  %tr
-    %th Name
-    - @artists.each do |artist|
-      %tr
-        %td= link_to(artist.name, artist_albums_path(artist.id))
+- content_for :sidebar do
+  = link_to 'add new artist', new_user_artist_path(@user)
+
+%h1 Artists
+.span-20
+  %table
+    %tr
+      %th Name
+      - @artists.each do |artist|
+        %tr
+          %td= link_to(artist.name, user_artist_albums_path(@user,artist.id))

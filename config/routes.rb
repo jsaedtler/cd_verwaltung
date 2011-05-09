@@ -12,16 +12,14 @@ CdVerwaltung::Application.routes.draw do
 
   match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
 
-  resources :users do
-    resources :artists
-  end
-
   resource :session, :only => [:new, :create, :destroy]
 
-  resources :artists do
-    resources :albums do
-      resources :tracks
-      resources :comments
+  resources :users do
+    resources :artists do
+      resources :albums do
+        resources :tracks
+        resources :comments
+      end
     end
   end
 

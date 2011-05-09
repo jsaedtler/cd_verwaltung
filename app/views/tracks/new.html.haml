@@ -1,11 +1,11 @@
 - content_for :breadcrumbs do
-  = breadcrumbs(@album)
+  = breadcrumbs(@user, @album)
 
 .span-20.large.last
   New Track
 
 .span-20.last
-= form_for [@artist, @album, @track] do |form|
+= form_for [@user, @artist, @album, @track] do |form|
   .span-4
     = form.label :title
   .span-16.last

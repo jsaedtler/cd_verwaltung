@@ -1,5 +1,5 @@
 .large New Artist
-= form_for @artist do |form|
+= form_for @user, @artist do |form|
   = form.text_field :name
   = form.submit('create')
   
