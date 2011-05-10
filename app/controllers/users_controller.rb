@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all(:order => 'login asc')
+    @users = User.order('login asc').all
   end
  
   def create
