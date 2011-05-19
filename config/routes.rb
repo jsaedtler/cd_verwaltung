@@ -14,6 +14,18 @@ CdVerwaltung::Application.routes.draw do
 
   resource :session, :only => [:new, :create, :destroy]
 
+  resources :albums do
+    collection do
+      post :search
+    end
+  end
+
+  resources :tracks do
+    collection do
+      post :search
+    end
+  end
+
   resources :users do
     resources :artists do
       resources :albums do

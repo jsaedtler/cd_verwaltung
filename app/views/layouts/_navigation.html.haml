@@ -1,9 +1,16 @@
 - if current_user
-  .span-23
+  .span-4
     Hi 
     = current_user.login
+  .span-19
+    = render :partial => '/layouts/search'
   .span-1.last
     = link_to 'logout', logout_path
+
 - else
-  .span-24.last
+  .span-4
+    %nbsp
+  .span-19
+    = render :partial => '/layouts/search'
+  .span-1.last  
     = link_to 'login', login_path

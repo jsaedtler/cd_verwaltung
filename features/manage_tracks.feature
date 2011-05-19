@@ -6,17 +6,15 @@ Feature: Manage tracks
 
   Scenario: (5b) eingeloggter User kann zu einm seiner Artist Albums mit Tracks anlegen
     Given I am logged in
-    And the following artists:
-      |name   |
-      |madonna|
     And the following albums:
-      |title        |
-      |Like a Virgin|
+      | user    | artist  | title         |
+      | quentin | madonna | Like a Virgin |
     And I am on the new track page for madonna Like a Virgin
     When I fill in "Title" with "Material Girl"
     And I fill in "Duration" with "240"
     And I press "create"
-    Then I should see "madonna"
+    Then I should see "Track was successfully created."
+    And I should see "madonna"
     And I should see "Like a Virgin"
     And I should see "Material Girl"
     And I should see "240"

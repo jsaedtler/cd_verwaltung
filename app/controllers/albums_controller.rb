@@ -40,14 +40,23 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def search
+    @albums = Album.find(:all,
+                    :include => :artist,
+                    :conditions => [
+                           "albums.title like :query or artists.name like :query",
+                           {:query => "%#{params[:search][:query].to_s}%"}])
+    render :index
+  end
+  
   private
 
   def get_artist
-    @artist = @user.artists.find_by_id(params[:artist_id], :include => :albums)
+    @artist = @user.artists.find_by_id(params[:artist_id]) if params[:artist_id]
   end
   
   def get_album
-    @album = Album.find_by_id(params[:id], :include => [:tracks, :comments])
+    @album = Album.find_by_id(params[:id], :include => [:tracks, :comments], :include => :tracks)
   end
 
   def get_user

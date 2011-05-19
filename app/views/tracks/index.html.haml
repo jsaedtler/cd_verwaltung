@@ -1,3 +1,20 @@
-= link_to 'add new track', new_artist_album_track_path(album.artist,album)
-= render :partial => 'track_list', :locals => {:album => @album}
-= link_to 'album', artist_album_path(@artist,@album)
+- content_for :breadcrumbs do
+  =# breadcrumbs(@user)
+
+- content_for :sidebar do
+  .span-4
+    &nbsp
+
+.album_list.span-20.last
+  %table
+    %tr
+      %th Aritst
+      %th Album
+      %th Track
+      %th Duration
+      - @tracks.each do |track|
+        %tr
+          %td= link_to(track.album.artist.name, user_artist_albums_path(track.album.user, track.album.artist))
+          %td= link_to(track.album.title, user_album_path(track.album.user, track.album))
+          %td= track.title
+          %td= track.duration

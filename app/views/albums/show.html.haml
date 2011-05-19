@@ -2,13 +2,14 @@
   =# breadcrumbs(@user, @album)
 
 - content_for :sidebar do
-  - if current_user
-    = link_to 'Edit Album', edit_user_artist_album_path(@user,@artist, @album)
-
+  - if current_user && @album.user == current_user
+    = link_to 'Edit Album', edit_user_artist_album_path(current_user,@album.artist, @album)
+  - else
+    &nbsp
 
 .span-20.last
   .large
-    = @album.title
+    = "#{@album.artist.name}: #{@album.title}"
 .span-10.last.track_list
   = render :partial => '/tracks/track_list', :locals => {:album => @album}
 .span-10.last
