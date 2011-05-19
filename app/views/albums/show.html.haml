@@ -8,8 +8,7 @@
     &nbsp
 
 .span-20.last
-  .large
-    = "#{@album.artist.name}: #{@album.title}"
+  %h1= "Album: #{@album.title} (#{@album.artist.name})"
 .span-10.last.track_list
   = render :partial => '/tracks/track_list', :locals => {:album => @album}
 .span-10.last
