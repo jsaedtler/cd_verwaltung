@@ -21,6 +21,9 @@ CdVerwaltung::Application.routes.draw do
         resources :comments
       end
     end
+    resources :albums do
+      resources :comments
+    end
   end
 
   # The priority is based upon order of creation:

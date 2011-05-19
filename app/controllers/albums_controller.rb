@@ -1,9 +1,14 @@
 class AlbumsController < ApplicationController
+  before_filter :get_user
   before_filter :get_artist
   before_filter :get_album, :only => [:edit, :update, :show]
 
   def index
-    @albums = @artist.albums
+    if @artist
+      @albums = @artist.albums
+    else
+      @albums = @user.albums
+    end
   end
 
   def new
@@ -43,6 +48,10 @@ class AlbumsController < ApplicationController
   
   def get_album
     @album = Album.find_by_id(params[:id], :include => [:tracks, :comments])
+  end
+
+  def get_user
+    @user = User.find_by_id(params[:user_id])
   end
 
 end

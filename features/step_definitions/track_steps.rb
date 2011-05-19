@@ -1,10 +1,11 @@
 Given /^the following tracks:$/ do |tracks|
   user = User.find_by_login('quentin')
   artist = user.artists.find_by_name('madonna')
-  album = artist.albums.find_by_title('Like a Virgin')
+  album = artist.albums.find_by_title('Like a Virgin') # default
 
   tracks.hashes.each do |hash|
-    album.track.create!(tracks.hashes)
+    album = Album.find_by_title(hash.delete("album")) if hash["album"]
+    album.tracks.create!(hash)
   end
 
 end

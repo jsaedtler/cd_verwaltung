@@ -4,7 +4,7 @@ Feature: Manage tracks
   wants to fill the form
   
 
-  Scenario: (5b) new tracks
+  Scenario: (5b) eingeloggter User kann zu einm seiner Artist Albums mit Tracks anlegen
     Given I am logged in
     And the following artists:
       |name   |

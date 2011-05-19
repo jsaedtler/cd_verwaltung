@@ -2,6 +2,7 @@ class Album < ActiveRecord::Base
   belongs_to :artist
   has_many :tracks
   has_many :comments, :order => 'comments.created_at desc'
+  has_one :user, :through => :artist
 
   # Paperclip
   has_attached_file :cover,

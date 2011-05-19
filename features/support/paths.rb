@@ -8,6 +8,7 @@ module NavigationHelpers
   def path_to(page_name)
     user = User.find_by_login('quentin')
     artist = Artist.find_by_name('madonna')
+    album = Album.find_by_title('Like a Virgin')
 
     case page_name
 
@@ -22,8 +23,20 @@ module NavigationHelpers
     when /my new artist page/
       new_user_artist_path(user)
 
+    when /the edit album page for "Like a Virgin"/
+      edit_user_artist_album_path(user, artist, album)
+
+    when /the show album page for "Like a Virgin"/
+      user_album_path(user, album)
+      
+    when /my show album page for "Like a Virgin"/
+      user_artist_album_path(user, artist, album)
+
     when /the new user page/
       new_user_path
+
+    when /the index users page/
+      users_path
 
     when /the login page/
       login_path

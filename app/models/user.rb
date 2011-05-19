@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
 
   has_many :artists
+  has_many :albums, :through => :artists
 
   validates :login, :presence   => true,
                     :uniqueness => true,

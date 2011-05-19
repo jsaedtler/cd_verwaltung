@@ -12,7 +12,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.album = @album
     if @comment.save
-      redirect_to artist_album_path(@artist, @album), :notice => 'Comment was successfully created.'
+      if current_user
+        redirect_to user_artist_album_path(current_user,@album.artist, @album), :notice => 'Comment was successfully created.'
+      else
+        redirect_to user_album_path(@album.user, @album), :notice => 'Comment was successfully created.'
+      end
     else
       render :new
     end
@@ -21,8 +25,7 @@ class CommentsController < ApplicationController
   private
 
   def get_resources
-    @artist = current_user.artists.find_by_id(params[:artist_id])
-    @album = @artist.albums.find_by_id(params[:album_id])
+    @album = Album.find_by_id(params[:album_id])
   end
 
 end
