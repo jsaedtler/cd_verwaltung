@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_filter :login_required#, :except => :search
+  before_filter :login_required, :except => :search
   before_filter :get_resources
 
   def index

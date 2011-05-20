@@ -155,3 +155,17 @@ Feature: CD Verwaltung
     Then I should see "Like a Virgin"
 
 
+  Scenario: (12): User kann nach von registrierten Usern angelegten Album-Tracks per Titel oder Artist suchen
+    Given the following users:
+      | login    | password   | password_confirmation | email              |
+      | quentin  | monkey     | monkey                | monkey@exmaple.com |
+    And the following albums:
+      | user    | artist  | title         |
+      | quentin | madonna | Like a Virgin |
+    And the following tracks:
+      | albums        | title         | duration |
+      | Like a Virgin | Material Girl | 250      |
+    When I am on the index users page
+    And I fill in "track_search_query" with "ateri"
+    And I press "search tracks"
+    Then I should see "Material Girl"
