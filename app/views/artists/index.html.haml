@@ -1,9 +1,7 @@
 - content_for :sidebar do
   - if current_user && @artist
     .span-4
-      = link_to 'add new artist', new_user_artist_path(@user)
-  .span-4
-    = link_to 'Users', users_path
+      = link_to 'New artist', new_user_artist_path(@user)
   .span-4
     = link_to "Albums of #{@user.login}", user_albums_path(@user)
 

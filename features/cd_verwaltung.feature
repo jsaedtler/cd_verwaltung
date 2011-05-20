@@ -83,7 +83,8 @@ Feature: CD Verwaltung
       | login    | password   | password_confirmation | email              |
       | quentin  | monkey     | monkey                | monkey@exmaple.com |
       | albert   | monkey     | monkey                | alber@exmaple.com  |
-    When I am on the users page
+    When I am on the root page
+    And I follow "All Users"
     Then I should see sorted users
 
   Scenario: (8) anonymer User kann sich eine alphabetische Liste der Alben eines registrierten Users anzeigen lassen

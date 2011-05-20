@@ -1,6 +1,9 @@
 - content_for :sidebar do
   - if current_user && @album.user == current_user
-    = link_to 'Edit Album', edit_user_artist_album_path(current_user,@album.artist, @album)
+    .span-4
+      = link_to 'Edit Album', edit_user_artist_album_path(current_user,@album.artist, @album)
+    .span-4
+      = link_to 'New Tack for Album', new_user_artist_album_track_path(@user,@album.artist,@album)
   - else
     &nbsp
   .span-4
