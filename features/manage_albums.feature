@@ -57,3 +57,15 @@ Feature: Manage albums
     And I should see "Material Girl"
     And I should see "Angel"
     And I should see the image "Missing"
+
+  Scenario: (11) User kann nach von registrierten Usern angelegten Alben per Titel oder Artist suchen
+    Given the following users:
+      | login    | password   | password_confirmation | email              |
+      | quentin  | monkey     | monkey                | monkey@exmaple.com |
+    And the following albums:
+      | user    | artist  | title         |
+      | quentin | madonna | Like a Virgin |
+    When I am on the index users page
+    And I fill in "album_search_query" with "Virgin"
+    And I press "search albums"
+    Then I should see "Like a Virgin"

@@ -10,6 +10,15 @@ class Album < ActiveRecord::Base
                                  :medium => "400x400#" }
 
   attr_accessible :title, :cover
-
   validates_length_of :title, :minimum => 1
+
+
+  def self.search(query)
+    Album.find(:all,
+          :include => :artist,
+          :conditions => [
+                 "albums.title like :query or artists.name like :query",
+                 {:query => "%#{query}%"}])    
+  end
+  
 end

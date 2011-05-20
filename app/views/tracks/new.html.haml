@@ -1,18 +1,13 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(@user, @album)
-
-.span-20.large.last
-  New Track
-
 .span-20.last
-= form_for [@user, @artist, @album, @track] do |form|
-  .span-4
-    = form.label :title
-  .span-16.last
-    = form.text_field :title
-  .span-4
-    = form.label :duration
-  .span-16.last
-    = form.number_field :duration
-  .span-16.last.actions
-    = form.submit('create')
+  %h1 New Track
+  = form_for [@user, @artist, @album, @track] do |form|
+    .span-4
+      = form.label :title
+    .span-16.last
+      = form.text_field :title
+    .span-4
+      = form.label :duration
+    .span-16.last
+      = form.number_field :duration
+    .span-16.last.actions
+      = form.submit('create')

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   protect_from_forgery
 
@@ -8,6 +7,6 @@ class ApplicationController < ActionController::Base
   private
 
   def get_user
-    @user = current_user || User.find_by_id(params[:user_id])
+    @user = User.find_by_id(params[:user_id])
   end
 end

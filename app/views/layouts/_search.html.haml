@@ -1,9 +1,9 @@
 .span-8
-  - form_for :search, :url => search_albums_path do |f|
-    = f.search_field :query, :placeholder => 'Search for Albums'
-    = f.submit('search')
+  = form_for :album_search, :url => search_albums_path do |f|
+    = f.search_field :query, :placeholder => 'Search for Albums', :size => 20
+    = f.submit('search albums')
 .span-8
-  - form_for :search, :url => search_tracks_path do |f|
-    = f.search_field :query, :placeholder => 'Search for Tracks'
-    = f.submit('search')
+  = form_for :track_search, :url => search_tracks_path do |f|
+    = f.search_field :query, :placeholder => 'Search for Tracks', :size => 20
+    = f.submit('search tracks')
 

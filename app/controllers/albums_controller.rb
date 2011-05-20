@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_filter :login_required, :only => [:edit, :update, :new, :create]
   before_filter :get_user
   before_filter :get_artist
   before_filter :get_album, :only => [:edit, :update, :show]
@@ -41,11 +42,7 @@ class AlbumsController < ApplicationController
   end
 
   def search
-    @albums = Album.find(:all,
-                    :include => :artist,
-                    :conditions => [
-                           "albums.title like :query or artists.name like :query",
-                           {:query => "%#{params[:search][:query].to_s}%"}])
+    @albums = Album.search(params[:album_search][:query].to_s)
     render :index
   end
   

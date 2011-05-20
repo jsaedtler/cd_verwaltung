@@ -5,7 +5,7 @@ Feature: Manage artists
   
   Scenario: (4) eingeloggter User kann einen Artist mit sinnvollen Attributen anlegen
     Given I am logged in
-    When I follow "add new artist"
+    When I follow "New artist"
     And I fill in "Name" with "madonna"
     And I press "create"
     Then I should see "madonna"

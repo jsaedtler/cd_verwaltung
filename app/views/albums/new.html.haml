@@ -1,7 +1,3 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(@user, @album)
-
-.span-20.large.last
-  New Album
 .span-20.last
+  %h1 New Album
   = render :partial => 'form', :locals => {:artist => @artist, :album => @album}

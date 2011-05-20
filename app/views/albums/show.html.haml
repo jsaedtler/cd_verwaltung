@@ -1,11 +1,15 @@
-- content_for :breadcrumbs do
-  =# breadcrumbs(@user, @album)
-
 - content_for :sidebar do
   - if current_user && @album.user == current_user
     = link_to 'Edit Album', edit_user_artist_album_path(current_user,@album.artist, @album)
   - else
     &nbsp
+  .span-4
+    = link_to "Ablums for user: #{@user.login}", user_albums_path(@album.user)
+  .span-4
+    = link_to "Artists for user: #{@user.login}", user_artist_path(@album.user, @album.artist)
+  .span-4
+    = link_to "Ablums for artist: #{@album.artist.name}", user_artists_path(@album.user)
+
 
 .span-20.last
   %h1= "Album: #{@album.title} (#{@album.artist.name})"

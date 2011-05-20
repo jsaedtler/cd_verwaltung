@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required#, :except => :search
   before_filter :get_resources
 
   def index
@@ -21,11 +21,7 @@ class TracksController < ApplicationController
   end
 
   def search
-    @tracks = Track.find(:all,
-                    :include => {:album => :artist},
-                    :conditions => [
-                           "tracks.title like :query or artists.name like :query",
-                           {:query => "%#{params[:search][:query].to_s}%"}])
+    @tracks = Track.search(params[:track_search][:query].to_s)
     render :index
   end
 

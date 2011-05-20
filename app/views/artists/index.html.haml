@@ -1,11 +1,17 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(@user,nil)
-
 - content_for :sidebar do
-  = link_to 'add new artist', new_user_artist_path(@user)
+  - if current_user && @artist
+    .span-4
+      = link_to 'add new artist', new_user_artist_path(@user)
+  .span-4
+    = link_to 'Users', users_path
+  .span-4
+    = link_to "Albums of #{@user.login}", user_albums_path(@user)
 
-%h1 Artists
-.span-20
+
+.span-20.last
+  %h1 
+    Artists of
+    = @user.login
   %table
     %tr
       %th Name

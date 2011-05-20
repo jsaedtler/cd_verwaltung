@@ -1,28 +1,28 @@
-- content_for :breadcrumbs do
-  =# breadcrumbs(@user)
-
 - content_for :sidebar do
-  .span-4.add_ablum_link
-    - if current_user && @artist
+  - if current_user && @artist
+    .span-4
       = link_to 'add new album', new_user_artist_album_path(@user,@artist)
-    - else
-      &nbsp
+  .span-4
+    = link_to 'Users', users_path
+  - if @user  
+    .span-4
+      = link_to "Artists of #{@user.login}", user_artists_path(@user)
 
-.span-20.large.last
-  - if @user
-    Albums of 
-    = @user.login
-  - else
-    &nbsp
-.album_list.span-20.last
-  %h1 Albums
+.span-20.last
+  %h1
+    - if @artist
+      All Albums by artist:
+      = @artist.name
+    - elsif @user    
+      All Albums by user:
+      = @user.login
   %table
     %tr
       %th Cover
       %th Artist
-      %th Title
+      %th Album title
       - @albums.each do |album|
         %tr
           %td= link_to(image_tag(album.cover.url :thumb),user_album_path(album.user, album))
-          %td= album.artist.name
+          %td= link_to(album.artist.name, user_artists_path(album.user))
           %td= link_to(album.title, user_album_path(album.user,album))

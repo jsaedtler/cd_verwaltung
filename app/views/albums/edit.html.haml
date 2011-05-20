@@ -1,6 +1,3 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(@user, @album)
-
 - content_for :sidebar do
   = link_to 'add new track', new_user_artist_album_track_path(@user,@artist,@album)
 
@@ -10,5 +7,5 @@
 .span-20.last
   = render :partial => 'form', :locals => {:artist => @artist, :album => @album}
 
-.span-20.last
+.span-20.last                                                             
   = render :partial => '/tracks/track_list', :locals => {:album => @album}
