@@ -9,11 +9,10 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    @artist = Artist.new(params[:artist])
-    @artist.user = current_user
+    @artist = current_user.artists.build(params[:artist])
 
     if @artist.save
-      redirect_to user_artists_path(@user)
+      redirect_to user_artists_path(@user), :notice => 'Album was successfully created.'
     else
       render :new
     end

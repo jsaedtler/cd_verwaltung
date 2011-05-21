@@ -11,11 +11,12 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new(params[:track])
-    @track.album = @album
+    @track = @album.tracks.build(params[:track])
+
     if @track.save
       redirect_to user_artist_album_path(@user, @artist,@album), :notice => 'Track was successfully created.'
     else
+      flash.now[:error] ='Track could not be created'
       render :new
     end
   end

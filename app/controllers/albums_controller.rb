@@ -13,7 +13,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = @artist.albums.new(:title => 'new album')
+    @album = @artist.albums.build
   end
 
   def show
@@ -32,8 +32,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(params[:album])
-    @album.artist = @artist
+    @album = @artist.albums.build(params[:album])
     if @album.save
       redirect_to user_artist_album_path(@user, @artist, @album), :notice => 'Album was successfully created.'
     else
@@ -57,10 +56,6 @@ class AlbumsController < ApplicationController
                                 :tracks => {},
                                 :comments => :user
                               }, :include => :tracks)
-  end
-
-  def get_user
-    @user = User.find_by_id(params[:user_id])
   end
 
 end

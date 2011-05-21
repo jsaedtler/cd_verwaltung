@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # render new.rhtml
+
   def new
     @user = User.new
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       self.current_user = @user # !! now logged in
       redirect_back_or_default('/users', :notice => "Thanks for signing up!")
     else
-      flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again."
       render :action => 'new'
     end
   end

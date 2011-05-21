@@ -10,7 +10,8 @@ class Album < ActiveRecord::Base
                                  :medium => "400x400#" }
 
   attr_accessible :title, :cover
-  validates_length_of :title, :minimum => 1
+
+  validates_presence_of :title
 
 
   def self.search(query)

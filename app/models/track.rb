@@ -3,6 +3,9 @@ class Track < ActiveRecord::Base
 
   attr_accessible :title, :duration
 
+  validates_presence_of :title, :duration
+  validates_numericality_of :duration
+
   def self.search(query)
     find(:all,
          :include => {:album => :artist},

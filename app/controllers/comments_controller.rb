@@ -11,18 +11,24 @@ class CommentsController < ApplicationController
   def create
     @comment = @album.comments.build(params[:comment])
     @comment.user = current_user if current_user
+
     if @comment.save
-      if current_user
-        redirect_to user_artist_album_path(current_user,@album.artist, @album), :notice => 'Comment was successfully created.'
-      else
-        redirect_to user_album_path(@album.user, @album), :notice => 'Comment was successfully created.'
-      end
+      redirect_to select_redirect, :notice => 'Comment was successfully created.'
     else
-      render :new
+      flash[:error] = 'Comment could not be created: ' + @comment.errors.full_messages.to_s
+      redirect_to select_redirect
     end
   end
 
   private
+
+  def select_redirect
+    if current_user
+      user_artist_album_path(current_user,@album.artist, @album)
+    else
+      user_album_path(@album.user, @album)
+    end
+  end
 
   def get_resources
     @album = Album.find_by_id(params[:album_id])

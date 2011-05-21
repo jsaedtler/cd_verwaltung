@@ -113,9 +113,9 @@ Feature: CD Verwaltung
       | user    | artist  | title         |
       | quentin | madonna | Like a Virgin |
     And the following tracks:
-      | album         | title         | 
-      | Like a Virgin | Material Girl | 
-      | Like a Virgin | Angel         |
+      | album         | title         | duration |
+      | Like a Virgin | Material Girl | 50       |
+      | Like a Virgin | Angel         | 100      |
     When I am on the index users page
     And I follow "quentin"
     And I follow "Like a Virgin"

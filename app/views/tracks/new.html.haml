@@ -1,4 +1,6 @@
 .span-20.last
+  = error_messages_for :track
+.span-20.last
   %h1 New Track
   = form_for [@user, @artist, @album, @track] do |form|
     .span-4
