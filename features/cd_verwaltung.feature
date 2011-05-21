@@ -92,11 +92,17 @@ Feature: CD Verwaltung
       | login    | password   | password_confirmation | email              |
       | quentin  | monkey     | monkey                | monkey@exmaple.com |
     And the following albums:
-      |user    | artist  | title         |
-      |quentin | madonna | Like a Virgin |
+      |user    | artist    | title             |
+      |quentin | madonna   | Like a Virgin     |
+      |quentin | metallica | Black Album       |
+      |quentin | metallica | Master of Puppets |
     When I am on the index users page
     And I follow "quentin"
-    Then I should see "Albums"
+    Then I should see the following albums:
+      | Cover   | Artist    | Album title       |
+      |         | metallica | Black Album       |
+      |         | madonna   | Like a Virgin     |
+      |         | metallica | Master of Puppets |
     And I should see "madonna"
     
   Scenario: (9) anonymer User kann sich ein Album mit Cover und Tracks eines registrierten Users anzeigen lassen

@@ -6,9 +6,9 @@ class AlbumsController < ApplicationController
 
   def index
     if @artist
-      @albums = @artist.albums
+      @albums = @artist.albums.order(:title)
     else
-      @albums = @user.albums
+      @albums = @user.albums.order(:title)
     end
   end
 
@@ -53,7 +53,10 @@ class AlbumsController < ApplicationController
   end
   
   def get_album
-    @album = Album.find_by_id(params[:id], :include => [:tracks, :comments], :include => :tracks)
+    @album = Album.find_by_id(params[:id], :include => {
+                                :tracks => {},
+                                :comments => :user
+                              }, :include => :tracks)
   end
 
   def get_user
