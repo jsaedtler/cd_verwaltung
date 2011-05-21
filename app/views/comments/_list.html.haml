@@ -1,7 +1,9 @@
 .comment_list
   - comments.each do |comment|
     .comment
-      .date
-        = comment.created_at
-      .content    
+      .header.last
+        = comment.created_at.strftime("%d.%m.%y %H:%M")
+        by 
+        = comment.user ? link_to(comment.user.login, user_albums_path(comment.user)) : 'anonymous'
+      .content.last
         = comment.content

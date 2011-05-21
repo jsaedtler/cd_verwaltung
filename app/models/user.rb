@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :artists
   has_many :albums, :through => :artists
 
+  has_many :comments
+  
   validates :login, :presence   => true,
                     :uniqueness => true,
                     :length     => { :within => 3..40 },
@@ -23,13 +25,7 @@ class User < ActiveRecord::Base
                     :length     => { :within => 6..100 }
 
   
-
-  # HACK HACK HACK -- how to do attr_accessible from here?
-  # prevents a user from submitting a crafted form that bypasses activation
-  # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
-
-
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
