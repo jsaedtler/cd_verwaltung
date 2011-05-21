@@ -2,7 +2,7 @@
 
 To install, checkout the git repository:
 
-git clone 
+git clone git@github.com:jsaedtler/cd_verwaltung.git
 
 
 install bundler:
